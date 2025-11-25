@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apple Watch Ultra Experience • Clone by Hậu Dev</title>
+
+    <!-- CSS -->
+    <link th:href="@{/css/watch-ultra.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white">
+
+<!-- 🔝 HEADER tái sử dụng -->
+<header th:replace="fragments/header :: header"></header>
+
+<!-- 🎬 HERO VIDEO -->
+<section id="hero" class="hero text-center">
+    <h1>Apple Watch Ultra 2</h1>
+    <p>Thiết kế cho hành trình không giới hạn.</p>
+    <!-- Nếu dùng video thì bật dòng dưới -->
+    <!-- <video th:src="@{/videos/watch-ultra-hero.mp4}" autoplay muted loop playsinline></video> -->
+    <img th:src="@{/images/adventure_hero__e984wp5sx1ui_xlarge.jpg}" alt="Apple Watch Ultra Hero" />
+</section>
+
+<!-- 💡 FEATURES -->
+<section class="feature-section fade-up">
+    <div>
+        <h2>Màn hình sáng nhất từ trước đến nay</h2>
+        <p>Độ sáng đạt 3000 nit giúp bạn đọc rõ nội dung dưới ánh nắng chói chang. Chất liệu titan bền bỉ và tinh xảo, sẵn sàng đồng hành trong mọi chuyến phiêu lưu.</p>
+    </div>
+    <img th:src="@{/images/highlights_satellite__ftgl6qyfpkia_large_2x.jpg}" alt="Apple Watch Bright Display" />
+</section>
+
+<section class="feature-section fade-up">
+    <div>
+        <h2>Hiệu năng mạnh mẽ</h2>
+        <p>Chip S10 mới giúp thao tác mượt hơn, đo sức khỏe chính xác và tiết kiệm năng lượng hơn. Sạc đầy nhanh trong 45 phút, sử dụng hơn 36 giờ.</p>
+    </div>
+    <img th:src="@{/images/watchultra2.avif}" alt="Apple Watch Chip" />
+</section>
+
+<section class="feature-section fade-up">
+    <div>
+        <h2>Sức khỏe & thể thao</h2>
+        <p>Theo dõi nhịp tim, O₂, ECG, vòng tay siêu nhẹ, cảm biến chính xác đến từng nhịp thở. Được chứng nhận cho lặn sâu tới 40 m và đo độ cao chính xác.</p>
+    </div>
+    <img th:src="@{/images/watchultra3.jpg}" alt="Apple Watch Health" />
+</section>
+
+<section class="py-20 text-center">
+    <h2 class="text-4xl sm:text-5xl font-semibold mb-10">Chọn phong cách của bạn</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-[1200px] mx-auto px-6">
+        <article class="tile dynamic">
+            <img th:src="@{/images/watch5.jpg}" alt="Watch Ultra Orange" />
+            <div class="tile-body">
+                <h4>Apple Watch Ultra 2 – Ocean Band</h4>
+                <p>Đậm cá tính, màu cam biểu tượng cho sức mạnh và phiêu lưu.</p>
+                <div class="links"><a href="/shop/applewatch">Tìm hiểu</a><a href="/products/19">Mua</a></div>
+            </div>
+        </article>
+        <article class="tile dynamic">
+            <img th:src="@{/images/watch4.jpg}" alt="Watch Ultra Blue" />
+            <div class="tile-body">
+                <h4>Apple Watch Ultra 2 – Blue Trail</h4>
+                <p>Phong cách thể thao, linh hoạt, hoàn hảo cho mọi chuyến đi.</p>
+                <div class="links"><a href="/shop/applewatch">Tìm hiểu</a><a href="/products/20">Mua</a></div>
+            </div>
+        </article>
+        <article class="tile dynamic">
+            <img th:src="@{/images/watch6.jpg}" alt="Watch Ultra Black" />
+            <div class="tile-body">
+                <h4>Apple Watch Ultra 2 – Titanium Edition</h4>
+                <p>Sang trọng, mạnh mẽ và chuẩn Apple nhất.</p>
+                <div class="links" ><a href="/shop/applewatch">Tìm hiểu</a><a href="/products/22">Mua</a></div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- 🪩 PARALLAX LIFESTYLE -->
+<section class="relative overflow-hidden py-28">
+    <img th:src="@{/images/ultra-lifestyle.jpg}" class="absolute inset-0 w-full h-full object-cover opacity-70 parallax" alt="Apple Watch Lifestyle" />
+    <div class="relative z-10 max-w-[800px] mx-auto text-center text-white px-6">
+        <h2 class="text-5xl font-semibold mb-4">Đồng hành cùng bạn mọi nơi</h2>
+        <p class="text-lg opacity-90">Từ đỉnh núi, lòng biển đến thành phố. Apple Watch Ultra luôn ở bên bạn – ghi lại từng bước, từng nhịp tim, từng khoảnh khắc.</p>
+    </div>
+</section>
+
+<!-- ⚙️ TECH SPECS -->
+<section class="py-20 border-t border-white/10 bg-black/40 text-center">
+    <h2 class="text-4xl font-semibold mb-8">Thông số kỹ thuật</h2>
+    <div class="max-w-[900px] mx-auto grid sm:grid-cols-3 gap-6 text-sm text-gray-300 px-6">
+        <div><h4 class="text-white mb-2">Chất liệu</h4><p>Titanium Series Grade 5</p></div>
+        <div><h4 class="text-white mb-2">Màn hình</h4><p>OLED LTPO Always-On 3000 nits</p></div>
+        <div><h4 class="text-white mb-2">Pin</h4><p>36h Usage / 72h Low Power Mode</p></div>
+        <div><h4 class="text-white mb-2">Kháng nước</h4><p>WR100 + EN13319</p></div>
+        <div><h4 class="text-white mb-2">Chip</h4><p>Apple S10 SiP + U2 Ultra Wideband</p></div>
+        <div><h4 class="text-white mb-2">Hệ điều hành</h4><p>watchOS 11</p></div>
+    </div>
+</section>
+
+<div th:replace="/fragments/footer :: footer"></div>
+
+<!-- JS -->
+<script th:src="@{/javascript/watch-ultra.js}"></script>
+</body>
+</html>

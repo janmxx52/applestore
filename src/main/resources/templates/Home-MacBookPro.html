@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MacBook Pro – Apple (VN)</title>
+    <meta name="description" content="MacBook Pro. Siêu mạnh mẽ với chip M4 Pro và M4 Max.">
+
+    <!-- CSS -->
+    <link th:href="@{/css/macbook-pro.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                bg: '#000000',
+                ink: '#f5f5f7',
+                muted: '#a1a1aa',
+                brand: '#2997ff'
+              },
+              fontFamily: {
+                sf: [
+                  '-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans'
+                ]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+
+<body class="bg-bg text-ink font-sf antialiased">
+
+<!-- Header container -->
+<div th:replace="fragments/header :: header"></div>
+
+<script th:inline="javascript">
+    fetch("[[@{/partials/header.html}]]")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header").innerHTML = html;
+
+        const script = document.createElement("script");
+        script.src = "[[@{/javascript/header.js}]]";
+        document.body.appendChild(script);
+
+        script.onload = () => {
+          if (window.initHeader) {
+            console.log("⚙️ Khởi tạo header...");
+            setTimeout(() => window.initHeader(), 150);
+          }
+        };
+      })
+      .catch(err => console.error("❌ Lỗi khi tải header:", err));
+</script>
+
+<!-- HERO -->
+<section class="hero relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+    <video autoplay muted playsinline preload="auto"
+           class="absolute inset-0 w-full h-full object-cover opacity-80">
+        <source th:src="@{/images/videomac1.mp4}" type="video/mp4">
+    </video>
+    <div class="relative z-10 mt-20">
+        <h1 class="text-5xl sm:text-7xl font-semibold drop-shadow-lg">MacBook Pro</h1>
+        <p class="mt-4 text-lg sm:text-2xl text-gray-300">Hiệu năng phi thường. Được nâng tầm bởi chip M4 Pro và M4 Max.</p>
+        <div class="mt-8 flex justify-center gap-6">
+            <a href="/shop/macbook" class="text-brand text-lg hover:underline">Tìm hiểu thêm</a>
+            <a href="/products/15" class="bg-brand text-white px-6 py-2 rounded-full text-lg hover:bg-brand/90 transition">Mua</a>
+        </div>
+    </div>
+</section>
+
+<!-- CHIP -->
+<section class="section text-center">
+    <div class="max-w-[900px] mx-auto">
+        <h2 class="text-4xl sm:text-6xl font-semibold mb-6">Chip M4 Pro và M4 Max</h2>
+        <p class="text-gray-400 text-lg mb-12">Sức mạnh chưa từng có, cho những dự án sáng tạo và khối lượng công việc cực lớn.</p>
+        <img th:src="@{/images/mac1.jpg}" alt="Chip M4 Pro" class="mx-auto w-[600px] max-w-full rounded-3xl shadow-xl">
+    </div>
+</section>
+
+<!-- DISPLAY -->
+<section class="section text-center bg-gradient-to-b from-gray-900 to-black">
+    <div class="max-w-[900px] mx-auto">
+        <h2 class="text-4xl sm:text-6xl font-semibold mb-6">Màn hình Liquid Retina XDR</h2>
+        <p class="text-gray-400 text-lg mb-12">Độ sáng cực đại, độ tương phản 1.000.000:1 và độ chính xác màu tuyệt đối.</p>
+        <img th:src="@{/images/videomac3.jpg}" alt="Liquid Retina XDR" class="mx-auto rounded-3xl shadow-2xl">
+    </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section class="section text-center">
+    <div class="max-w-[900px] mx-auto">
+        <h2 class="text-4xl sm:text-6xl font-semibold mb-6">Hiệu năng & Pin</h2>
+        <p class="text-gray-400 text-lg mb-12">
+            MacBook Pro chạy mượt mọi ứng dụng nặng: thiết kế 3D, video 8K, code, render.
+            Pin lên tới 22 giờ – hiệu năng duy trì đỉnh cao.
+        </p>
+        <img th:src="@{/images/performance1.jpg}" alt="Mac Performance" class="mx-auto rounded-3xl shadow-xl">
+        <img th:src="@{/images/performance.jpg}" alt="Mac Performance" class="mx-auto rounded-3xl shadow-xl">
+    </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" class="section text-center bg-white text-black">
+    <h2 class="text-4xl sm:text-6xl font-semibold mb-4">Chọn MacBook Pro của bạn</h2>
+    <p class="text-gray-600 text-lg mb-12">Mọi kích cỡ. Mọi chip. Cùng đỉnh cao hiệu năng.</p>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+        <div class="compare-card">
+            <img th:src="@{/images/macbook13.avif}" class="rounded-xl mx-auto mb-4">
+            <h3 class="font-semibold text-xl">MacBook Pro 13”</h3>
+            <p class="text-gray-600">Chip M4</p>
+            <p class="font-bold mt-2">Từ 39.990.000 ₫</p>
+        </div>
+        <div class="compare-card">
+            <img th:src="@{/images/macbookpro13.avif}" class="rounded-xl mx-auto mb-4">
+            <h3 class="font-semibold text-xl">MacBook Pro 14”</h3>
+            <p class="text-gray-600">Chip M4 Pro</p>
+            <p class="font-bold mt-2">Từ 49.990.000 ₫</p>
+        </div>
+        <div class="compare-card">
+            <img th:src="@{/images/macbook16.avif}" class="rounded-xl mx-auto mb-4">
+            <h3 class="font-semibold text-xl">MacBook Pro 16”</h3>
+            <p class="text-gray-600">Chip M4 Max</p>
+            <p class="font-bold mt-2">Từ 59.990.000 ₫</p>
+        </div>
+    </div>
+    <a th:href="@{/shop/macbook}" class="mt-12 inline-block bg-black text-white px-8 py-3 rounded-full text-lg hover:bg-gray-800 transition">Mua ngay</a>
+</section>
+
+<!-- FOOTER -->
+<div th:replace="/fragments/footer :: footer"></div>
+
+<!-- JS -->
+<script th:src="@{/javascript/macbook-pro.js}"></script>
+
+</body>
+</html>

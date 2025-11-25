@@ -1,0 +1,70 @@
+<!-- Global Header / Nav -->
+<header class="sticky top-0 z-50 backdrop-blur-xl bg-black/70 border-b border-white/10"
+        xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav id="globalNav" class="max-w-[1200px] mx-auto flex items-center justify-between h-12 px-4 text-sm text-gray-300 select-none">
+
+        <!-- Logo -->
+        <a href="/" aria-label="Trang chủ" class="p-2 hover:opacity-80 transition">
+            <svg width="18" height="18" viewBox="0 0 256 315" class="fill-white">
+                <path d="M213 167c0-41 33-61 34-62c-18-26-45-30-55-31c-23-2-44 13-55 13c-12 0-31-13-51-12c-26 1-50 15-63 38C2 153 18 208 39 240c13 19 28 41 49 40c20-1 27-13 50-13c23 0 29 13 51 13c21 0 35-19 48-38c14-21 19-42 19-43c-1 0-37-14-37-72zM167 52c10-12 17-28 15-44c-14 1-31 9-41 21c-9 11-17 28-15 44c16 1 31-8 41-21z"/>
+            </svg>
+        </a>
+
+        <!-- Desktop Nav -->
+        <ul id="navList" class="hidden md:flex items-center gap-8 font-medium tracking-wide">
+            <li class="nav-item group" data-menu="store"><button class="nav-link">Store</button></li>
+            <li class="nav-item group" data-menu="mac"><button class="nav-link">Mac</button></li>
+            <li class="nav-item group" data-menu="ipad"><button class="nav-link">iPad</button></li>
+            <li class="nav-item group" data-menu="iphone"><button class="nav-link">iPhone</button></li>
+            <li class="nav-item group" data-menu="watch"><button class="nav-link">Watch</button></li>
+            <li class="nav-item group" data-menu="airpods"><button class="nav-link">AirPods</button></li>
+            <li class="nav-item group" data-menu="tv"><button class="nav-link">TV & Home</button></li>
+            <li class="nav-item group" data-menu="support"><button class="nav-link">Support</button></li>
+            <li class="nav-item group" data-menu="login">
+                <button class="nav-link">Tài khoản</button>
+            </li>
+
+        </ul>
+
+        <!-- Right Side Icons -->
+        <div class="flex items-center gap-3">
+            <button id="btnSearch" class="p-2 rounded hover:bg-white/10 transition" aria-label="Tìm kiếm">
+                <svg width="18" height="18" viewBox="0 0 24 24" class="stroke-white/80" fill="none">
+                    <circle cx="11" cy="11" r="7" stroke-width="1.5"/><path d="M20 20l-3.2-3.2" stroke-width="1.5"/>
+                </svg>
+            </button>
+            <button id="btnBag" class="p-2 rounded hover:bg-white/10 transition" aria-label="Giỏ hàng">
+                <svg width="18" height="18" viewBox="0 0 24 24" class="stroke-white/80" fill="none">
+                    <path d="M6 6h14l-2 9H8L6 6Z" stroke-width="1.5"/><path d="M6 6 5 3H3" stroke-width="1.5"/>
+                </svg>
+            </button>
+            <button id="btnMenu" class="md:hidden p-2 rounded hover:bg-white/10" aria-controls="mobileNav" aria-expanded="false" aria-label="Mở menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" class="stroke-white/80" fill="none">
+                    <path d="M3 6h18M3 12h18M3 18h18" stroke-width="1.5"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mega menu container -->
+    <div id="megaHost" class="hidden md:block absolute top-12 left-0 w-full bg-black/95 border-t border-white/10 text-white transition-all duration-300 opacity-0 pointer-events-none" style="backdrop-filter: blur(30px);">
+        <div class="max-w-[1200px] mx-auto grid grid-cols-4 gap-8 p-8 text-sm leading-relaxed" id="megaContent">
+            <!-- nội dung JS render ở đây -->
+        </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="hidden md:hidden bg-black/90 border-t border-white/10">
+        <ul class="px-4 py-3 space-y-2 text-gray-300 text-sm">
+            <li><a href="#" class="block py-2 hover:text-white">Store</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">Mac</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">iPad</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">iPhone</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">Watch</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">AirPods</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">TV & Home</a></li>
+            <li><a href="#" class="block py-2 hover:text-white">Support</a></li>
+            <li><a href="Login.html" class="block py-2 hover:text-white">Login</a></li>
+        </ul>
+    </div>
+</header>

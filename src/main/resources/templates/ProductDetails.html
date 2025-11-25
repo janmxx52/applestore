@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${product.name} - Chi tiết sản phẩm|">Chi tiết sản phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link th:href="@{/css/iphone17pro.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" >
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <style>
+        .product-image { max-width: 100%; border-radius: 6px; }
+        .price { font-size: 1.6rem; font-weight: 700; color: #e74c3c; }
+        .muted { color: #6c757d; }
+        .variant-table th, .variant-table td { vertical-align: middle; }
+        .stock-badge { font-size: 0.9rem; }
+    </style>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                bg: '#0a0a0a',
+                ink: '#f5f5f7',
+                brand: '#2997ff',
+                muted: '#a1a1aa'
+              },
+              fontFamily: {
+                sf: ['-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans']
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container mt-5">
+    <div class="row">
+        <!-- Cột hình ảnh với slider -->
+        <div class="col-md-6 flex flex-col items-center">
+            <div id="productCarousel" class="relative w-full max-w-md">
+                <div class="overflow-hidden rounded-2xl">
+                    <img th:src="@{'/images/' + ${images[0].imageUrl}}" alt=""
+                         class="w-full object-cover transition-all duration-500" id="mainImage">
+                </div>
+                <button type="button" id="prevBtn"
+                        class="absolute top-1/2 left-3 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white px-2 py-1 rounded-full">‹</button>
+                <button type="button" id="nextBtn"
+                        class="absolute top-1/2 right-3 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white px-2 py-1 rounded-full">›</button>
+            </div>
+
+            <div class="flex justify-center gap-3 mt-4">
+                <img th:each="img : ${images}" th:src="@{'/images/' + ${img.imageUrl}}"
+                     class="thumb w-16 h-16 rounded-lg border-2 border-transparent hover:border-blue-500 cursor-pointer transition-all">
+            </div>
+        </div>
+
+
+        <!-- Cột chi tiết -->
+        <div class="col-md-6">
+            <h2 th:text="${product.name}">Tên sản phẩm</h2>
+
+            <p class="price" th:text="${#numbers.formatDecimal(mainPrice, 0, 0, 'COMMA') + ' ₫'}">0 ₫</p>
+
+            <div class="mb-3">
+                <label for="colorSelect">Màu</label>
+                <select id="colorSelect" name="colorSelect" class="form-control">
+                    <option value="">-- Chọn màu --</option>
+                    <option th:each="color : ${colors}"
+                            th:value="${color.id}"
+                            th:text="${color.name}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="capacitySelect">Dung lượng</label>
+                <select id="capacitySelect" name="capacitySelect" class="form-control">
+                    <option value="">-- Chọn dung lượng --</option>
+                    <option th:each="cap : ${capacities}"
+                            th:value="${cap.id}"
+                            th:text="${cap.label != null ? cap.label : (cap.gb != null ? cap.gb + ' GB' : 'Không có')}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <span>Kho hàng: </span>
+                <span id="stockInfo" class="badge badge-info stock-badge">-</span>
+            </div>
+
+            <div class="mb-3">
+                <form th:action="@{/cart/add}" method="post">
+                    <input type="hidden" name="productId" th:value="${product.id}">
+                    <input type="hidden" name="variantId" th:value="${selectedVariant != null ? selectedVariant.id : 0}">
+                    <input type="number" name="quantity" value="1">
+                    <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                </form>
+
+
+                <button id="buy" class="btn btn-primary btn-lg">Mua sản phẩm</button>
+            </div>
+
+            <hr/>
+            <h6>Thông tin chi tiết</h6>
+            <table class="table table-sm variant-table">
+                <thead>
+                <tr>
+                    <th>Màu</th>
+                    <th>Dung lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng còn</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="v : ${variants}">
+                    <td th:text="${v.color.name}">Màu</td>
+                    <td th:text="${v.capacity != null ? v.capacity.label : 'Không có kích thước'}">Dung lượng</td>
+                    <td th:text="${#numbers.formatDecimal(v.price,0,0) + ' ₫'}">0₫</td>
+                    <td th:text="${v.stock}">0</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Khu vực hiển thị đánh giá -->
+    <section class="mt-12 py-8 border-t border-gray-200">
+        <h4 class="text-3xl font-bold mb-6 text-gray-900">Đánh giá & Bình luận</h4>
+
+        <!-- Tổng điểm -->
+        <div class="flex items-center mb-6">
+            <div class="flex items-center text-yellow-400 text-2xl">
+      <span th:each="i : ${#numbers.sequence(1,5)}"
+            th:classappend="${i <= avgRating ? 'text-yellow-400' : 'text-gray-300'}">★</span>
+            </div>
+            <p class="ml-3 text-gray-800 text-lg">
+                <span th:text="${#numbers.formatDecimal(avgRating,1,1)}">4.8</span>/5
+                <span class="text-gray-500 text-base">(<span th:text="${totalReviews}">20</span> đánh giá)</span>
+            </p>
+        </div>
+
+        <!-- Danh sách bình luận -->
+        <div id="review-list" class="space-y-4">
+            <article th:each="r : ${reviews}" class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
+                <header class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-2">
+                        <div class="font-semibold text-gray-900">Người dùng <span th:text="${r.userId}"></span></div>
+                        <div class="text-yellow-400" th:utext="${'★'.repeat(r.rating)}"></div>
+                    </div>
+                    <small class="text-gray-500" th:text="${#temporals.format(r.createdAt, 'dd/MM/yyyy')}">02/11/2025</small>
+                </header>
+                <p class="text-gray-800 leading-relaxed" th:text="${r.content}">Sản phẩm tốt, pin dùng cả ngày.</p>
+                <footer class="text-gray-500 text-sm mt-2">
+                    ❤️ <span th:text="${r.likes}">5</span> lượt thích
+                </footer>
+            </article>
+        </div>
+
+        <!-- Form gửi đánh giá -->
+        <div class="mt-8 bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-sm">
+            <h5 class="text-xl font-semibold mb-4 text-gray-900">Viết đánh giá của bạn</h5>
+
+            <form th:action="@{/reviews/add}" method="post" class="space-y-4">
+                <input type="hidden" name="productId" th:value="${product.id}"/>
+
+                <!-- Rating -->
+                <div class="flex items-center gap-2">
+                    <label class="font-medium text-gray-800">Chọn số sao:</label>
+                    <div id="rating-stars" class="flex text-2xl cursor-pointer text-gray-300">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <input type="hidden" id="rating" name="rating" value="5">
+                </div>
+
+                <textarea name="content" rows="3" class="form-control border-gray-300 rounded-xl" placeholder="Chia sẻ cảm nhận của bạn..."></textarea>
+                <button type="submit" class="btn btn-dark px-4 py-2 rounded-lg shadow-sm hover:bg-gray-800">Gửi đánh giá</button>
+            </form>
+        </div>
+    </section>
+
+
+</div>
+<div th:replace="/fragments/footer :: footer"></div>
+<script th:src="@{/javascript/iphone17pro.js}"></script>
+
+</body>
+<script>
+    // ⭐ Hiệu ứng chọn sao trực quan
+    document.addEventListener("DOMContentLoaded", function () {
+      const stars = document.querySelectorAll("#rating-stars span");
+      const ratingInput = document.getElementById("rating");
+
+      stars.forEach(star => {
+        star.addEventListener("mouseover", () => {
+          const val = star.getAttribute("data-value");
+          stars.forEach(s => s.style.color = s.getAttribute("data-value") <= val ? "#facc15" : "#d1d5db");
+        });
+
+        star.addEventListener("click", () => {
+          const val = star.getAttribute("data-value");
+          ratingInput.value = val;
+          stars.forEach(s => s.style.color = s.getAttribute("data-value") <= val ? "#facc15" : "#d1d5db");
+        });
+
+        star.addEventListener("mouseout", () => {
+          const val = ratingInput.value;
+          stars.forEach(s => s.style.color = s.getAttribute("data-value") <= val ? "#facc15" : "#d1d5db");
+        });
+      });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const thumbs = document.querySelectorAll(".thumb");
+      const mainImage = document.getElementById("mainImage");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      let currentIndex = 0;
+
+      const thumbList = Array.from(thumbs);
+      function showImage(index) {
+        const src = thumbList[index].getAttribute("src");
+        mainImage.src = src;
+        thumbList.forEach(t => t.classList.remove("border-blue-500"));
+        thumbList[index].classList.add("border-blue-500");
+      }
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener("click", () => {
+          currentIndex = i;
+          showImage(currentIndex);
+        });
+      });
+
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + thumbList.length) % thumbList.length;
+        showImage(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % thumbList.length;
+        showImage(currentIndex);
+      });
+
+      showImage(0);
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".price").forEach(el => {
+        const val = parseInt(el.textContent.replace(/[^\d]/g, ""));
+        el.textContent = val.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
+      });
+    });
+</script>
+
+
+
+</html>

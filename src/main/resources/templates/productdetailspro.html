@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Senifone S1 – Seniors Smartphone</title>
+    <!-- Bootstrap for grid & accordion -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root{
+          --brand:#ff5a1f;        /* senifone orange */
+          --brand-dark:#e34f1b;
+          --ink:#1d1d1f;          /* apple-ish dark */
+          --muted:#6e6e73;
+          --surface:#ffffff;
+          --bg:#f5f5f7;           /* apple-ish gray */
+          --radius:18px;
+        }
+        html,body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,Roboto,system-ui,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+        a{color:var(--brand)}
+        .container-xxl{max-width:1260px}
+
+        /* ---------- Header (placeholder) ---------- */
+        .site-header{background:#fff;border-bottom:1px solid #e9e9ee;position:sticky;top:0;z-index:100}
+        .site-header .logo{font-weight:800;letter-spacing:.3px}
+
+        /* ---------- Hero product top ---------- */
+        .product-hero{padding:36px 0}
+        .product-gallery{position:sticky;top:92px}
+        .product-main{border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+        .thumbs{gap:10px}
+        .thumbs img{width:86px;height:86px;object-fit:cover;border-radius:12px;border:1px solid #ececf2;cursor:pointer;transition:transform .2s}
+        .thumbs img:hover{transform:translateY(-2px)}
+
+        .buy-card{background:var(--surface);border:1px solid #ececf2;border-radius:22px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+        .product-title{font-size:1.6rem;font-weight:800;margin-bottom:6px}
+        .review-badges{gap:10px}
+        .trust{display:inline-flex;align-items:center;gap:6px;background:#14b8a6;color:#fff;border-radius:999px;padding:2px 10px;font-weight:600;font-size:.88rem}
+        .price{display:flex;align-items:center;gap:10px;margin:14px 0 8px}
+        .price .current{font-size:1.8rem;font-weight:800;color:var(--brand)}
+        .price .old{color:#9a9aa1;text-decoration:line-through}
+        .delivery{list-style:none;padding-left:0;margin:12px 0 4px}
+        .delivery li{display:flex;gap:8px;align-items:center;color:#3c3c41;font-size:.95rem;margin:6px 0}
+        .delivery .dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+
+        .btn-buy{background:var(--brand);border:none;border-radius:14px;padding:14px 18px;font-weight:700}
+        .btn-buy:hover{background:var(--brand-dark)}
+
+        .meta-list{list-style:none;padding-left:0;margin:18px 0 0}
+        .meta-list li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed #eee;color:#3d3d41}
+        .meta-list li:last-child{border-bottom:none}
+
+        /* ---------- Accessories upsell column ---------- */
+        .upsell{margin-top:22px}
+        .upsell h6{font-weight:800}
+        .acc-item{display:flex;align-items:center;justify-content:space-between;border:1px solid #ececf2;border-radius:14px;padding:10px 12px;margin-bottom:10px;background:#fff}
+        .acc-item .left{display:flex;align-items:center;gap:10px}
+        .acc-item img{width:36px;height:36px;border-radius:8px;border:1px solid #eee}
+        .acc-item .price{margin:0}
+        .acc-item .price .current{font-size:1rem}
+        .acc-item .add{border:1px solid #ddd;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+        /* ---------- Section headings ---------- */
+        .section-title{font-size:1.6rem;font-weight:800;margin-bottom:18px}
+
+        /* ---------- Features band ---------- */
+        .features{background:#fff;border:1px solid #ececf2;border-radius:22px;padding:22px}
+        .feature{display:flex;gap:14px;align-items:flex-start;padding:8px 0}
+        .feature .icon{width:28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+        /* ---------- Reviews ---------- */
+        .review{background:#fff;border:1px solid #ececf2;border-radius:18px;padding:16px}
+        .stars{color:#00b67a;letter-spacing:2px;font-weight:800}
+
+        /* ---------- FAQ ---------- */
+        .faq .accordion-button{font-weight:600}
+
+        /* ---------- Tech spec diagram ---------- */
+        .spec-card{background:#fff;border:1px solid #ececf2;border-radius:22px;padding:22px}
+        .spec-list{list-style:none;padding-left:0}
+        .spec-list li{padding:8px 0;border-bottom:1px dashed #eee}
+        .spec-list li:last-child{border-bottom:none}
+        .phone-diagram{max-width:420px;border-radius:18px;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+
+        /* ---------- CTA banner ---------- */
+        .cta{position:relative;border-radius:22px;overflow:hidden}
+        .cta img{width:100%;height:220px;object-fit:cover;filter:brightness(.7)}
+        .cta .content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
+
+        /* ---------- Footer ---------- */
+        .site-footer{background:#0f0f10;color:#c7c7cb;padding:36px 0;margin-top:32px}
+        .site-footer a{color:#d6d6dc;text-decoration:none}
+        .site-footer a:hover{color:#fff}
+    </style>
+</head>
+<body>
+<!-- Header (placeholder) -->
+<header class="site-header py-2">
+    <div class="container-xxl d-flex align-items-center gap-3">
+        <div class="logo me-auto">senif<span style="color:var(--brand)">one</span></div>
+        <nav class="d-none d-md-flex gap-4 small">
+            <a href="#">Home</a>
+            <a href="#">Senifone S1</a>
+            <a href="#">Accessories</a>
+            <a href="#">Customer service</a>
+            <a href="#">Points of sale</a>
+        </nav>
+        <div class="d-flex gap-3 small">
+            <a href="#">Cart</a>
+            <a href="#">Login</a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO: images + buy panel + upsell -->
+<section class="product-hero">
+    <div class="container-xxl">
+        <div class="row g-4">
+            <!-- Gallery -->
+            <div class="col-lg-6">
+                <div class="product-gallery">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=1200&auto=format&fit=crop" alt="main" class="img-fluid product-main">
+                    <div class="thumbs d-flex mt-3">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=300" alt>
+                        <img src="https://images.unsplash.com/photo-1510557880182-3df87cb2ecb6?q=80&w=300" alt>
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=300" alt>
+                        <img src="https://images.unsplash.com/photo-1520974690022-86d7a2d3b54a?q=80&w=300" alt>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buy panel + upsell (right) -->
+            <div class="col-lg-6">
+                <div class="buy-card">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between">
+                        <h1 class="product-title m-0">Senifone S1 – Seniors Smartphone</h1>
+                        <span class="trust">★ 4.6 • 95+ reviews</span>
+                    </div>
+                    <p class="text-muted mt-2 mb-2">The smartphone specially developed for seniors. Big icons, SOS button, secured software. Works with popular apps like WhatsApp and Facebook.</p>
+                    <div class="price">
+                        <span class="current">€199,95</span>
+                        <span class="old">€299,95</span>
+                        <span class="badge text-bg-success">incl. VAT</span>
+                    </div>
+                    <ul class="delivery">
+                        <li><span class="dot"></span> Free shipping</li>
+                        <li><span class="dot"></span> 30 days return</li>
+                        <li><span class="dot"></span> Delivered tomorrow</li>
+                    </ul>
+                    <button class="btn btn-buy w-100 mt-2">Add to Cart</button>
+
+                    <ul class="meta-list mt-3">
+                        <li>📦 Get started guide included</li>
+                        <li>🛡️ 2 year warranty</li>
+                        <li>🛠️ Technical support</li>
+                    </ul>
+                </div>
+
+                <div class="upsell">
+                    <h6 class="mb-2">Bescherm Senifone en maak hem compleet!</h6>
+                    <!-- accessories list -->
+                    <div class="acc-item">
+                        <div class="left">
+                            <img src="https://images.unsplash.com/photo-1526178612302-6343ec0b8af5?q=80&w=200" alt>
+                            <div>
+                                <div class="fw-semibold small">Senifone Telefoonzakje met koord</div>
+                                <div class="text-muted small">€6,95</div>
+                            </div>
+                        </div>
+                        <div class="add">+</div>
+                    </div>
+                    <div class="acc-item">
+                        <div class="left">
+                            <img src="https://images.unsplash.com/photo-1512446816042-444d64126786?q=80&w=200" alt>
+                            <div>
+                                <div class="fw-semibold small">Micro SD card – 32GB</div>
+                                <div class="text-muted small">€13,95</div>
+                            </div>
+                        </div>
+                        <div class="add">+</div>
+                    </div>
+                    <div class="acc-item">
+                        <div class="left">
+                            <img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=200" alt>
+                            <div>
+                                <div class="fw-semibold small">Backcover with space for passes – Black</div>
+                                <div class="text-muted small">€24,95</div>
+                            </div>
+                        </div>
+                        <div class="add">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features & Reviews two-column band -->
+<section class="py-4">
+    <div class="container-xxl">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="features h-100">
+                    <div class="section-title">Điểm nổi bật</div>
+                    <div class="feature"><div class="icon">✓</div><div>Ứng dụng đã cài sẵn, sẵn dùng ngay</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Nút SOS có thể tuỳ chỉnh</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Phím lớn – dễ bấm, dễ đọc</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Phần mềm bảo mật</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Quay số nhanh cho người thân</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Không cần tạo tài khoản</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Điều hướng đơn giản</div></div>
+                    <div class="feature"><div class="icon">✓</div><div>Không cần cài đặt phức tạp</div></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section-title">Đánh giá từ khách hàng</div>
+                <div class="review mb-3">
+                    <div class="d-flex justify-content-between"><span class="stars">★★★★★</span><small class="text-muted">4 ngày trước</small></div>
+                    <p class="mb-0 mt-2">Máy hoạt động mượt, mẹ mình rất dễ sử dụng và thích nút SOS.</p>
+                </div>
+                <div class="review mb-3">
+                    <div class="d-flex justify-content-between"><span class="stars">★★★★★</span><small class="text-muted">1 tuần trước</small></div>
+                    <p class="mb-0 mt-2">Màn hình lớn, biểu tượng to rõ ràng. Pin khoẻ.</p>
+                </div>
+                <div class="review">
+                    <div class="d-flex justify-content-between"><span class="stars">★★★★☆</span><small class="text-muted">2 tuần trước</small></div>
+                    <p class="mb-0 mt-2">Hỗ trợ WhatsApp và Facebook rất tiện cho ông bà.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq py-5">
+    <div class="container-xxl">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-6">
+                <img class="img-fluid rounded-4 shadow" src="https://images.unsplash.com/photo-1532983332434-5d4ac7176ef2?q=80&w=1200&auto=format&fit=crop" alt>
+            </div>
+            <div class="col-lg-6">
+                <div class="section-title">Frequently Asked Questions</div>
+                <div class="accordion" id="faq">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="q1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="true">Can I use my current SIM card?</button>
+                        </h2>
+                        <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+                            <div class="accordion-body">Yes. Senifone S1 uses Nano‑SIM and works with most providers.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="q2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Can I install my own apps?</button>
+                        </h2>
+                        <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faq">
+                            <div class="accordion-body">Yes. Popular apps like WhatsApp and Facebook are supported out of the box.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="q3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">What do I receive in the box?</button>
+                        </h2>
+                        <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faq">
+                            <div class="accordion-body">Senifone S1, charging cable, getting‑started booklet and SIM ejector.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical details -->
+<section class="py-5">
+    <div class="container-xxl">
+        <div class="section-title">Technical details</div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="spec-card">
+                    <ul class="spec-list">
+                        <li><strong>Storage:</strong> 32 GB (expandable with Micro‑SD)</li>
+                        <li><strong>Screen:</strong> 6.5 inch</li>
+                        <li><strong>Battery:</strong> 5000 mAh – a full day of use</li>
+                        <li><strong>Connectivity:</strong> Wi‑Fi • 4G • GPS • Bluetooth 5.0</li>
+                        <li><strong>Cameras:</strong> Rear 13 MP • Selfie 5 MP</li>
+                        <li><strong>SIM:</strong> Nano‑SIM</li>
+                        <li><strong>Color:</strong> Black (more colors via cases)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img class="phone-diagram img-fluid" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop" alt>
+                <div class="text-muted small mt-2">Hoogte: 164.9 mm • Breedte: 77.1 mm • Diepte: 9 mm • Gewicht: 196 g</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="container-xxl">
+    <div class="cta mb-4">
+        <img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?q=80&w=1600&auto=format&fit=crop" alt>
+        <div class="content">
+            <h3 class="fw-bold mb-2">To ask?</h3>
+            <p class="mb-3">We are happy to think along with you!</p>
+            <a class="btn btn-light px-4" href="#">Contact us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container-xxl">
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
+                <h6 class="text-white">About Senifone</h6>
+                <div class="small">Senifone BV • NL</div>
+                <div class="small">Support • Warranty • Points of sale</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <h6 class="text-white">Quick links</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-3">
+                <h6 class="text-white">Customer service</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Pay</a></li>
+                    <li><a href="#">Warranty & repair</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-3">
+                <h6 class="text-white">Newsletter</h6>
+                <div class="input-group input-group-sm">
+                    <input type="email" class="form-control" placeholder="Enter email">
+                    <button class="btn btn-outline-light">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

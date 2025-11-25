@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập - AppleStore</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Header fragment -->
+<!--<div th:replace="fragments/header :: siteHeader"></div>-->
+
+<section class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Đăng nhập</h4>
+                </div>
+                <div class="card-body">
+                    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                    <form th:action="@{/login}" method="post">
+                        <div class="form-group">
+                            <label for="username">Tên đăng nhập</label>
+                            <input id="username" name="username" type="text" class="form-control" placeholder="Nhập tên đăng nhập" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-between align-items-center">
+                            <a th:href="@{/register}" class="small">Chưa có tài khoản? Đăng ký</a>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-3 text-muted small">
+                <!-- optional helper text -->
+                Đăng nhập để quản lý giỏ hàng và đặt hàng nhanh hơn.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer fragment -->
+<!--<div th:replace="fragments/footer :: siteFooter"></div>-->
+
+<!-- JS: jQuery + Bootstrap (required for navbar dropdown/toggle) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJ+Y3WxZmf0jV+Zrj6UU+Rk+3Bz5lF0qPEw5s=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

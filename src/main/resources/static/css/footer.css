@@ -1,0 +1,85 @@
+.apple-footer {
+  background-color: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Roboto, sans-serif;
+}
+
+.apple-icon {
+  color: #f5f5f7;
+  font-size: 2rem;
+}
+
+.apple-footer a {
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.apple-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.text-secondary {
+  color: #a1a1a6 !important;
+}
+
+/* Subscribe form */
+.subscribe-form {
+  background-color: #1c1c1e;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.subscribe-form input {
+  border: none;
+  background: transparent;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+}
+.subscribe-form input::placeholder {
+  color: #777;
+}
+
+.btn-submit {
+  background-color: #0071e3;
+  color: #fff;
+  border: none;
+  padding: 0 1.2rem;
+  font-weight: 500;
+  border-radius: 0 40px 40px 0;
+  transition: background-color 0.3s ease;
+}
+.btn-submit:hover {
+  background-color: #005bbd;
+}
+
+/* Social icons */
+.social-icons a {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #1c1c1e;
+  color: #fff;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+.social-icons a:hover {
+  background-color: #0071e3;
+  transform: translateY(-3px);
+}
+
+/* Divider */
+.divider {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.footer-logo h5 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}

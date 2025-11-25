@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AppleWatch – Apple (VN)</title>
+
+    <!-- CSS -->
+    <link th:href="@{/css/iphone17pro.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                bg: '#0a0a0a',
+                ink: '#f5f5f7',
+                brand: '#2997ff',
+                muted: '#a1a1aa'
+              },
+              fontFamily: {
+                sf: ['-apple-system','BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans']
+              }
+            }
+          }
+        }
+    </script>
+</head>
+
+<body class="bg-bg text-ink font-sf">
+
+<div th:replace="fragments/header :: header"></div>
+
+<main class="max-w-[1200px] mx-auto px-6 py-16 font-[Inter]">
+    <h1 class="text-4xl sm:text-6xl font-semibold text-center text-gray-1000">Mua AppleWatch</h1>
+    <p class="text-center text-gray-1100 text-lg mt-2">Chọn mẫu AppleWatch phù hợp nhất với bạn.</p>
+
+
+    <!-- ✅ Grid 3 cột, hiển thị ngang -->
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-8 mt-12">
+        <!-- ✅ Chỉ cần 1 vòng th:each ở đây -->
+        <div class="product-card group relative bg-white shadow-md hover:shadow-xl rounded-2xl p-6
+                    transition-all duration-300 hover:-translate-y-2"
+             th:each="p : ${CategoryApplewatch}">
+
+            <div class="overflow-hidden rounded-xl">
+                <img th:src="@{'/images/' + ${p.image}}"
+                     th:alt="${p.name}"
+                     class="w-full h-64 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105">
+            </div>
+
+            <div class="mt-5 text-center">
+                <h2 th:text="${p.name}" class="text-xl font-semibold text-gray-900 mb-2">Tên sản phẩm</h2>
+                <p th:text="${p.description}" class="text-gray-500 text-sm line-clamp-2">Mô tả sản phẩm</p>
+            </div>
+
+            <div class="mt-4 text-center">
+                <p class="text-[17px] font-medium text-gray-800"
+                   th:text="'Từ ' + ${#numbers.formatDecimal(p.price, 0, 0)} + ' ₫'">
+                    Giá
+                </p>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+                <a th:href="@{'/products/' + ${p.id}}"
+                   class="btn-buy text-white bg-[#0071e3] hover:bg-[#005bb5]
+                          text-sm px-6 py-2 rounded-full transition-all duration-300 shadow-sm hover:shadow-lg">
+                    Mua
+                </a>
+                <a th:href="@{'/products/' + ${p.id}}"
+                   class="btn-learn border border-gray-300 text-gray-800
+                          hover:border-[#0071e3] hover:text-[#0071e3]
+                          text-sm px-6 py-2 rounded-full transition-all duration-300">
+                    Tìm hiểu thêm
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- JS -->
+<script th:src="@{/javascript/iphone17pro.js}"></script>
+</body>
+</html>
