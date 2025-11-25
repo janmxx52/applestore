@@ -47,17 +47,5 @@ Giao diện
 - Giao diện **chuẩn Apple**, mượt đẹp
 - Responsive trên mobile
 
----
-
-# Công Nghệ Sử Dụng
-
-| Công nghệ | Phiên bản |
-|----------|-----------|
-| Java | 23 |
-| Spring Boot | 3.x |
-| Spring Security | 3.x |
-| Thymeleaf | Latest |
-| MySQL | 8.x |
-| Maven | Wrapper |
 
 
