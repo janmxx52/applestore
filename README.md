@@ -8,26 +8,24 @@
 ---
 
 #Giới Thiệu
-**AppleStore** là website thương mại điện tử mô phỏng theo Apple.com, xây dựng bằng:
+AppleStore là website thương mại điện tử mô phỏng theo Apple.com, xây dựng bằng:
 
-- **Java Spring Boot**
-- **Spring Security**
-- **Thymeleaf**
-- **MySQL**
-- **HTML / CSS / JavaScript**
+- Java Spring Boot
+- Spring Security
+- Thymeleaf
+- MySQL
+- HTML / CSS / JavaScript
 
 Dự án cho phép xem danh sách sản phẩm, xem chi tiết, chọn phân loại, đánh giá sản phẩm, đăng ký – đăng nhập, và quản lý giỏ hàng.
 
----
+Tính Năng Chính
 
-#Tính Năng Chính
-
-### Authentication
+Authentication
 - Đăng ký tài khoản người dùng
 - Đăng nhập bằng Spring Security
 - Mã hoá mật khẩu bằng BCrypt
 
-### Sản Phẩm
+Sản Phẩm
 - Danh sách iPhone, MacBook, Apple Watch…
 - Mỗi sản phẩm có:
   - Hình ảnh
@@ -36,16 +34,16 @@ Dự án cho phép xem danh sách sản phẩm, xem chi tiết, chọn phân lo�
   - Biến thể giá
 - Trang chi tiết sản phẩm cực đẹp
 
-### Review
+Review
 - Người dùng để lại đánh giá
 - Chấm điểm 1–5 sao
 
-### Giỏ Hàng
+Giỏ Hàng
 - Thêm vào giỏ
 - Xóa
 - Tính tổng tiền
 
-### 🖼 Giao diện
+Giao diện
 - Giao diện **chuẩn Apple**, mượt đẹp
 - Responsive trên mobile
 
