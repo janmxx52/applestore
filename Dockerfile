@@ -11,3 +11,4 @@ RUN chmod +x mvnw
 RUN ./mvnw -q -DskipTests package
 
 CMD ["java", "-jar", "target/applestore-0.0.1-SNAPSHOT.jar"]
+ENV SPRING_PROFILES_ACTIVE=production
