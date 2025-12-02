@@ -74,6 +74,15 @@
         </dependency>
 
 
+        <!-- Spring Security Test -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+
         <!-- Hibernate Validator provides the jakarta.validation implementation -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
