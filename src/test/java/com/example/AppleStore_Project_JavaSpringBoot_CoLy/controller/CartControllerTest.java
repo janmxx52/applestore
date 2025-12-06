@@ -72,7 +72,7 @@ class CartControllerTest {
         // Fake cart item
         CartItem item = new CartItem();
         item.setId(10L);
-        item.setProducts(fakeProduct);  // 🔥 VERY IMPORTANT
+        item.setProducts(fakeProduct); // fake sản phẩm
 
         Mockito.when(productService.getCartItems(any(User.class)))
                 .thenReturn(List.of(item));

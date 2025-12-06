@@ -8,6 +8,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class TestSecurityConfig {
 
+    // tắt spring security để test nhanh
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable());
