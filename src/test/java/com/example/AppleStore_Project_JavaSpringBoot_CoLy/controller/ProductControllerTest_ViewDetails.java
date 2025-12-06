@@ -47,20 +47,16 @@ class ProductControllerTest_ViewDetails {
         product.setName("iPhone 16 Pro");
         product.setPrice(new BigDecimal("3099999"));
 
-        // Fake variant list (không rỗng)
         given(productService.getVariantByProductId(1L)).willReturn(List.of());
 
-        // Fake reviews
         given(reviewService.findByProductId(1L)).willReturn(List.of());
 
-        // ✔ FIX: phải có 1 hình ảnh, không được để list rỗng
         ProductImage img = new ProductImage();
         img.setImageUrl("/images/demo.jpg");
 
         given(productImageService.getImagesByProduct(1L))
                 .willReturn(List.of(img));
 
-        // Fake product
         given(productService.getProductById(1L)).willReturn(product);
 
         mockMvc.perform(get("/products/{id}", 1L))

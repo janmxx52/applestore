@@ -36,7 +36,6 @@ class CartControllerTest {
     @MockBean
     private ProductService productService;
 
-    // 🔹 1. User chưa login → redirect /login
     @Test
     void testViewCart_Unauthenticated() throws Exception {
         mockMvc.perform(get("/cart/view"))
@@ -44,7 +43,6 @@ class CartControllerTest {
                 .andExpect(redirectedUrl("/login"));
     }
 
-    // 🔹 2. User đã login → trả về trang "cart"
     @Test
     void testViewCart_Authenticated() throws Exception {
 

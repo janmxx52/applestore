@@ -18,8 +18,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-@Import(TestSecurityConfig.class)   // ⭐ Quan trọng
-
+@Import(TestSecurityConfig.class)
 
 @WebMvcTest(CartController.class)
 class CartControllerTest_Add_Update_Remove {
@@ -31,9 +30,7 @@ class CartControllerTest_Add_Update_Remove {
     private ProductService productService;
 
 
-    // =====================================================================
     // 1) TEST /cart/add
-    // =====================================================================
 
     @Test
     void testAddToCart_Unauthenticated() throws Exception {
@@ -70,9 +67,7 @@ class CartControllerTest_Add_Update_Remove {
 
 
 
-    // =====================================================================
     // 2) TEST /cart/update
-    // =====================================================================
 
     @Test
     void testUpdateCart() throws Exception {
@@ -88,9 +83,7 @@ class CartControllerTest_Add_Update_Remove {
 
 
 
-    // =====================================================================
     // 3) TEST /cart/remove
-    // =====================================================================
 
     @Test
     void testRemoveItem() throws Exception {
