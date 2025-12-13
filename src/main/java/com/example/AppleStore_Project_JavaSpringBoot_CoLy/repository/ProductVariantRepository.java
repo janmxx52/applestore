@@ -1,5 +1,6 @@
 package com.example.AppleStore_Project_JavaSpringBoot_CoLy.repository;
 
+import com.example.AppleStore_Project_JavaSpringBoot_CoLy.model.CartItem;
 import com.example.AppleStore_Project_JavaSpringBoot_CoLy.model.ProductVariant;
 import com.example.AppleStore_Project_JavaSpringBoot_CoLy.model.ProductVariantID;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +23,11 @@ public interface ProductVariantRepository extends JpaRepository<ProductVariant, 
        WHERE p.id = :products_id
        """)
     List<ProductVariant> findByProductWithDetail(@Param("products_id") Long products_id);
+
+
+
+
+
 
 
 }

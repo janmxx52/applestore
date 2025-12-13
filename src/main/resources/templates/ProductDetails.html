@@ -85,21 +85,20 @@
                 </select>
             </div>
 
-            <div class="mb-3">
-                <span>Kho hàng: </span>
-                <span id="stockInfo" class="badge badge-info stock-badge">-</span>
-            </div>
+<!--            <div class="mb-3">-->
+<!--                <span>Kho hàng: </span>-->
+<!--                <span id="stockInfo" class="badge badge-info stock-badge">-</span>-->
+<!--            </div>-->
 
             <div class="mb-3">
                 <form th:action="@{/cart/add}" method="post">
                     <input type="hidden" name="productId" th:value="${product.id}">
-                    <input type="hidden" name="variantId" th:value="${selectedVariant != null ? selectedVariant.id : 0}">
+                    <input type="hidden" name="variantId" id="variantId">
                     <input type="number" name="quantity" value="1">
                     <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
                 </form>
 
 
-                <button id="buy" class="btn btn-primary btn-lg">Mua sản phẩm</button>
             </div>
 
             <hr/>
@@ -188,7 +187,48 @@
 <div th:replace="/fragments/footer :: footer"></div>
 <script th:src="@{/javascript/iphone17pro.js}"></script>
 
+
 </body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const variants = /*[[${variants}]]*/ [];
+
+    const colorSelect   = document.getElementById("colorSelect");
+    const capacitySelect = document.getElementById("capacitySelect");
+    const variantInput  = document.getElementById("variantId");
+
+    function updateVariant() {
+        const colorId    = colorSelect.value;
+        const capacityId = capacitySelect.value;
+
+        if (!colorId || !capacityId) {
+            variantInput.value = "";
+            console.log("Chưa chọn đủ màu / dung lượng");
+            return;
+        }
+
+        const selected = variants.find(v =>
+            v.color && v.color.id == colorId &&
+            v.capacity && v.capacity.id == capacityId
+        );
+
+        if (selected) {
+            variantInput.value = selected.id;
+            console.log("Selected Variant:", selected.id);
+        } else {
+            variantInput.value = "";
+            console.log("Không tìm thấy variant phù hợp");
+        }
+    }
+
+    colorSelect.addEventListener("change", updateVariant);
+    capacitySelect.addEventListener("change", updateVariant);
+    /*]]>*/
+</script>
+
+
+
 <script>
     // ⭐ Hiệu ứng chọn sao trực quan
     document.addEventListener("DOMContentLoaded", function () {

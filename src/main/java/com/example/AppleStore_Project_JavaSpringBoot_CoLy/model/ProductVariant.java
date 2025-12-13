@@ -1,5 +1,6 @@
 package com.example.AppleStore_Project_JavaSpringBoot_CoLy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
@@ -17,8 +18,9 @@ public class ProductVariant {
     private Long id;
 
     // 🔗 Mối quan hệ với bảng products
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
+    @JsonIgnore
     private Products products;
 
     // 🔗 Mối quan hệ với bảng colors (màu sắc)

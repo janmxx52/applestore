@@ -140,18 +140,15 @@ public class ProductController {
                 .distinct()
                 .toList();
 
-        // ✅ Lấy danh sách review đúng cách
         List<Review> reviews = reviewService.findByProductId(id);
 
 
-        // ✅ Tính trung bình rating để hiển thị
         double avgRating = reviews.stream()
                 .mapToInt(Review::getRating)
                 .average()
                 .orElse(0.0);
 
 
-        //Lấy tất cả hình ảnh của sản phẩm
         var images = productImageService.getImagesByProduct(id);
 
         model.addAttribute("product", product);

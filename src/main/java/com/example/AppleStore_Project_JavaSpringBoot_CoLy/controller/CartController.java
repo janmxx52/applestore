@@ -32,7 +32,6 @@ public class CartController {
         List<CartItem> items = productService.getCartItems(user);
         BigDecimal total = productService.getTotal(user);
 
-        // Đóng gói lại thành đối tượng giỏ hàng tạm
         Cart cart = new Cart();
         cart.setUser(user);
         cart.setItems(items);
@@ -41,7 +40,7 @@ public class CartController {
         model.addAttribute("cartItems", items);
         model.addAttribute("total", total);
 
-        return "cart"; // Tên file Thymeleaf
+        return "cart";
     }
 
     @PostMapping("/add")

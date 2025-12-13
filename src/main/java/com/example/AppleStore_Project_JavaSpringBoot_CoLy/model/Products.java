@@ -43,6 +43,14 @@ public class Products {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    // Products.java
+    @Column(name = "active")
+    private Boolean active = true;
+
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
+
+
     // Constructors
     public Products() {}
 
